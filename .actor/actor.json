@@ -1,0 +1,29 @@
+{
+    "actorSpecification": 1,
+    "name": "instagram-profile-scraper",
+    "title": "Instagram Profile Scraper",
+    "description": "Extract Instagram profile data, posts, and engagement metrics. Requires residential proxies and login cookies.",
+    "version": "0.7.0",
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "Instagram Data Dataset",
+            "views": {
+                "posts": {
+                    "title": "Posts",
+                    "transformation": {
+                        "fields": ["caption", "likes", "comments_count", "shares", "post_type", "timestamp", "media_url", "username"]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "pageSize": 20
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "./Dockerfile"
+}

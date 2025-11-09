@@ -1,0 +1,127 @@
+{
+    "title": "Instagram Profile Scraper Input",
+    "description": "Extract data from Instagram profiles (Requires proxies and optionally login cookies)",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "username": {
+            "title": "Username/Profile URL",
+            "type": "string",
+            "description": "Instagram username or profile URL",
+            "example": "instagram",
+            "prefill": "",
+            "editor": "textfield"
+        },
+        "scrape_type": {
+            "title": "Scrape Type",
+            "type": "string",
+            "description": "What to extract from the profile",
+            "default": "profile_and_posts",
+            "enum": ["profile_only", "posts_only", "profile_and_posts", "stories", "highlights"],
+            "enumTitles": ["Profile Info Only", "Posts Only", "Profile & Posts", "Stories", "Highlights"],
+            "editor": "select"
+        },
+        "max_posts": {
+            "title": "Maximum Posts",
+            "type": "integer",
+            "description": "Maximum number of posts to scrape",
+            "default": 30,
+            "minimum": 1,
+            "maximum": 200,
+            "editor": "number"
+        },
+        "post_type_filter": {
+            "title": "Post Type Filter",
+            "type": "string",
+            "description": "Filter posts by type",
+            "default": "all",
+            "enum": ["all", "photos", "videos", "reels", "carousel"],
+            "enumTitles": ["All Types", "Photos Only", "Videos Only", "Reels Only", "Carousel Posts"],
+            "editor": "select"
+        },
+        "include_comments": {
+            "title": "Include Comments",
+            "type": "boolean",
+            "description": "Extract comments from posts",
+            "default": false,
+            "editor": "checkbox",
+            "sectionCaption": "Additional Data",
+            "sectionDescription": "Extract extra information"
+        },
+        "max_comments_per_post": {
+            "title": "Max Comments per Post",
+            "type": "integer",
+            "description": "Maximum comments to extract per post",
+            "default": 20,
+            "minimum": 1,
+            "maximum": 100,
+            "editor": "number"
+        },
+        "include_tagged_users": {
+            "title": "Include Tagged Users",
+            "type": "boolean",
+            "description": "Extract users tagged in posts",
+            "default": false,
+            "editor": "checkbox"
+        },
+        "include_location": {
+            "title": "Include Location Data",
+            "type": "boolean",
+            "description": "Extract location information from posts",
+            "default": false,
+            "editor": "checkbox"
+        },
+        "hashtag_search": {
+            "title": "Hashtag Search",
+            "type": "string",
+            "description": "Search posts by hashtag (without #)",
+            "example": "travel",
+            "editor": "textfield",
+            "sectionCaption": "Search Options",
+            "sectionDescription": "Search and filter options"
+        },
+        "min_likes": {
+            "title": "Minimum Likes",
+            "type": "integer",
+            "description": "Only include posts with at least this many likes",
+            "default": 0,
+            "minimum": 0,
+            "editor": "number"
+        },
+        "date_from": {
+            "title": "Date From",
+            "type": "string",
+            "description": "Only include posts after this date (YYYY-MM-DD)",
+            "example": "2024-01-01",
+            "editor": "textfield"
+        },
+        "session_cookies": {
+            "title": "Session Cookies",
+            "type": "string",
+            "description": "Instagram session cookies for authentication (recommended for better access)",
+            "editor": "textarea",
+            "sectionCaption": "Authentication (Recommended)",
+            "sectionDescription": "Provide session cookies for better access and to avoid rate limiting"
+        },
+        "proxy_configuration": {
+            "title": "Proxy Configuration",
+            "type": "object",
+            "description": "REQUIRED: Configure residential proxies for Instagram",
+            "editor": "proxy",
+            "sectionCaption": "Proxy Settings (Required)",
+            "sectionDescription": "Instagram requires residential proxies to avoid blocking"
+        },
+        "output_format": {
+            "title": "Output Format",
+            "type": "string",
+            "description": "Format for the output data",
+            "default": "json",
+            "enum": ["json", "csv", "excel"],
+            "enumTitles": ["JSON", "CSV", "Excel"],
+            "editor": "select",
+            "sectionCaption": "Output Settings",
+            "sectionDescription": "Configure output format"
+        }
+    },
+    "required": ["username"]
+}
