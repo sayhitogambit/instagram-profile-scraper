@@ -103,13 +103,21 @@
             "sectionCaption": "Authentication (Recommended)",
             "sectionDescription": "Provide session cookies for better access and to avoid rate limiting"
         },
-        "proxy_configuration": {
+        "proxyConfiguration": {
             "title": "Proxy Configuration",
             "type": "object",
-            "description": "REQUIRED: Configure residential proxies for Instagram",
+            "description": "REQUIRED: Use Apify residential proxies to avoid Instagram blocking",
             "editor": "proxy",
             "sectionCaption": "Proxy Settings (Required)",
-            "sectionDescription": "Instagram requires residential proxies to avoid blocking"
+            "sectionDescription": "Instagram requires residential proxies to work. Use RESIDENTIAL group.",
+            "default": {
+                "useApifyProxy": true,
+                "apifyProxyGroups": ["RESIDENTIAL"]
+            },
+            "prefill": {
+                "useApifyProxy": true,
+                "apifyProxyGroups": ["RESIDENTIAL"]
+            }
         },
         "output_format": {
             "title": "Output Format",
